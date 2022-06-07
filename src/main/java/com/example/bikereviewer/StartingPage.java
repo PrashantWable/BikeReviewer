@@ -10,12 +10,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class StartingPage extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("loginPage.fxml"));
-       // FXMLLoader fxmlLoader = new FXMLLoader(StartingPage.class.getResource("loginPage.fxml"));
-        Scene scene = new Scene(root, 722, 543);
-        stage.setTitle("Hello!");
+        Parent root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));
+        Scene scene = new Scene(root);
+        stage.setTitle("Login Page");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

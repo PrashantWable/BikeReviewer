@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="722.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bikereviewer.SignUpController">
+   <children>
+      <Label layoutX="185.0" layoutY="127.0" text="Username:" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="188.0" layoutY="179.0" text="Password:" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="getUsernameSignUp" layoutX="314.0" layoutY="135.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="0.0" prefWidth="200.0" promptText="Enter Username" />
+      <PasswordField fx:id="getPasswordSignUp" layoutX="314.0" layoutY="179.0" prefHeight="38.0" prefWidth="200.0" promptText="Password" />
+      <Label layoutX="211.0" layoutY="235.0" text="Gender:" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="getMaleGenderSignUp" layoutX="337.0" layoutY="244.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Male" textFill="#a0a2ab">
+         <toggleGroup>
+            <ToggleGroup fx:id="Gender" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="getFemaleGenderSignUp" layoutX="427.0" layoutY="244.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Female" textFill="#a0a2ab" toggleGroup="$Gender" />
+      <Button fx:id="signUpButtonAdd" layoutX="348.0" layoutY="307.0" mnemonicParsing="false" onAction="#signUpButtonAddFunction" style="-fx-background-color: #2196f3;" text="SignUp">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnToLoginButton" layoutX="591.0" layoutY="31.0" mnemonicParsing="false" onAction="#returnToLoginButtonFunction" text="Login">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

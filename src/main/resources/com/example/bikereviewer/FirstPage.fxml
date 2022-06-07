@@ -20,13 +20,13 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="signUpButton" layoutX="594.0" layoutY="28.0" mnemonicParsing="false" onAction="#signUp" text="SignUp">
+      <Button fx:id="signUpButton" layoutX="594.0" layoutY="28.0" mnemonicParsing="false" onAction="#signUp" text="Sign UP">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
       <TextArea fx:id="getUsername" layoutX="323.0" layoutY="226.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
-      <Button fx:id="loginButton" layoutX="329.0" layoutY="344.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="126.0" text="Login">
+      <Button fx:id="loginButton" layoutX="329.0" layoutY="344.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #2196f3;" text="Login">
          <font>
             <Font size="20.0" />
          </font></Button>
