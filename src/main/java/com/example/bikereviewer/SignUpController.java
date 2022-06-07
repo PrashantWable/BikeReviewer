@@ -3,6 +3,7 @@ package com.example.bikereviewer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,13 +11,18 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class SignUpController {
+public class SignUpController implements Initializable {
     @FXML
     private ToggleGroup Gender;
 
     @FXML
-    private RadioButton getGenderSignUp;
+    private RadioButton getFemaleGenderSignUp;
+
+    @FXML
+    private RadioButton getMaleGenderSignUp;
 
     @FXML
     private PasswordField getPasswordSignUp;
@@ -34,10 +40,10 @@ public class SignUpController {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    void getGenderSignUpFunction(ActionEvent event) {
+    private String userName;
+    private String password;
+    private String gender;
 
-    }
 
     @FXML
     void returnToLoginButtonFunction(ActionEvent event) throws IOException {
@@ -52,6 +58,36 @@ public class SignUpController {
 
     @FXML
     void signUpButtonAddFunction(ActionEvent event) {
+      userName = getUsernameSignUp();
+      password = getPasswordSignUp();
+      System.out.println(userName + " " + password + " " + gender);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    @FXML
+    public void getGenderSignUpFunction(ActionEvent event){
+      if (getMaleGenderSignUp.isSelected()){
+          gender = "Male";
+      } else if(getFemaleGenderSignUp.isSelected()){
+          gender = "Female";
+      }
+      else {
+          System.out.println("ERROR in selection");
+      }
+    }
+
+    @FXML
+    public String getUsernameSignUp(){
+            return getUsernameSignUp.getText();
+    }
+
+    @FXML
+    public String getPasswordSignUp(){
+            return getPasswordSignUp.getText();
+    }
+
 }
