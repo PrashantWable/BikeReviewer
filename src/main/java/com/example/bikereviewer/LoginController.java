@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +20,7 @@ public class LoginController implements Initializable {
     private PasswordField getPassword;
 
     @FXML
-    private TextArea getUsername;
+    private TextField getUsername;
 
     @FXML
     private Button loginButton;
@@ -35,9 +32,14 @@ public class LoginController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    private String userName;
+    private String password;
+
     @FXML
     void loginAction(ActionEvent event) {
         System.out.println("loginAction running");
+        userName = getUsername();
+        password = getPassword();
     }
 
 
@@ -59,4 +61,14 @@ public class LoginController implements Initializable {
         //getPassword.setStyle("-fx-text-inner-color: #a0a2ab");
 
     }
+    @FXML
+    public String getUsername(){
+        return getUsername.getText();
+    }
+
+    @FXML
+    public String getPassword(){
+        return getPassword.getText();
+    }
+
 }

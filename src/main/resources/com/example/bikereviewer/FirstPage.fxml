@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -25,12 +25,12 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <TextArea fx:id="getUsername" layoutX="323.0" layoutY="226.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="200.0" promptText="Username" />
       <Button fx:id="loginButton" layoutX="329.0" layoutY="344.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #2196f3;" text="Login">
          <font>
             <Font size="20.0" />
          </font></Button>
       <ButtonBar layoutX="59.0" layoutY="86.0" prefHeight="40.0" prefWidth="200.0" />
       <PasswordField fx:id="getPassword" layoutX="323.0" layoutY="285.0" prefHeight="36.0" prefWidth="200.0" promptText="Password" />
+      <TextField fx:id="getUsername" layoutX="323.0" layoutY="226.0" prefHeight="36.0" prefWidth="200.0" promptText="Username" />
    </children>
 </AnchorPane>

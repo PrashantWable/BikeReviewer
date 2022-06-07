@@ -28,7 +28,7 @@ public class SignUpController implements Initializable {
     private PasswordField getPasswordSignUp;
 
     @FXML
-    private TextArea getUsernameSignUp;
+    private TextField getUsernameSignUp;
 
     @FXML
     private Button returnToLoginButton;
