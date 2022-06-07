@@ -12,6 +12,4 @@ module com.example.bikereviewer {
 
     opens com.example.bikereviewer to javafx.fxml;
     exports com.example.bikereviewer;
-    exports com.example.bikereviewer.Controllers;
-    opens com.example.bikereviewer.Controllers to javafx.fxml;
 }

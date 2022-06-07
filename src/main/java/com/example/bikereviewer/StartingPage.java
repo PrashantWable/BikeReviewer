@@ -25,11 +25,4 @@ public class StartingPage extends Application {
         launch();
     }
 
-    public void signUp(ActionEvent actionEvent) {
-
-    }
-
-    public void loginAction(ActionEvent actionEvent) {
-
-    }
 }
