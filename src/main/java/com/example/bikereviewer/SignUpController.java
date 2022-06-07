@@ -15,6 +15,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
+
+    @FXML
+    private Label DisplayLabelSignUp;
+
     @FXML
     private ToggleGroup Gender;
 
@@ -60,12 +64,16 @@ public class SignUpController implements Initializable {
     void signUpButtonAddFunction(ActionEvent event) {
       userName = getUsernameSignUp();
       password = getPasswordSignUp();
-      System.out.println(userName + " " + password + " " + gender);
+      //System.out.println(userName + " " + password + " " + gender);
+      if (userName.equals("") || password.equals("") || gender.equals("")){
+          DisplayLabelSignUp.setVisible(true);
+          DisplayLabelSignUp.setText("Enter all the fields");
+      }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        DisplayLabelSignUp.setVisible(false);
     }
 
     @FXML
@@ -76,7 +84,7 @@ public class SignUpController implements Initializable {
           gender = "Female";
       }
       else {
-          System.out.println("ERROR in selection");
+          gender = "";
       }
     }
 
