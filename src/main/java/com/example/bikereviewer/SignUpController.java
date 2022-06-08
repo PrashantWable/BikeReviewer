@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
@@ -69,6 +72,25 @@ public class SignUpController implements Initializable {
           DisplayLabelSignUp.setVisible(true);
           DisplayLabelSignUp.setText("Enter all the fields");
       }
+      else{
+                insertIntoDB(userName, password, gender);
+      }
+    }
+
+    private static void insertIntoDB(String userName, String password, String gender){
+        Connection con = DBConnection.connect();
+        PreparedStatement ps = null;
+        try {
+            String sql = "INSERT INTO UserData(UserNames, Password, Gender) VALUES(?,?,?) ";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            ps.setString(3, gender);
+            ps.execute();
+            System.out.println("Data has been inserted!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

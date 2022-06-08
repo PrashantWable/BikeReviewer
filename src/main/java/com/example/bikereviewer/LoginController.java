@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -40,7 +41,11 @@ public class LoginController implements Initializable {
         System.out.println("loginAction running");
         userName = getUsername();
         password = getPassword();
-        DBConnection.connect();
+        //DBConnection.connect();
+    }
+
+    private static void readFromDB(){
+        Connection con = DBConnection.connect();
     }
 
 
