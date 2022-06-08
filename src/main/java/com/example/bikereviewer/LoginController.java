@@ -40,6 +40,7 @@ public class LoginController implements Initializable {
         System.out.println("loginAction running");
         userName = getUsername();
         password = getPassword();
+        DBConnection.connect();
     }
 
 
