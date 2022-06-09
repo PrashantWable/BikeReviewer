@@ -98,7 +98,9 @@ public class SignUpController implements Initializable {
             DisplayLabelSignUp.setVisible(true);
             DisplayLabelSignUp.setText("Account successfully created");
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            DisplayLabelSignUp.setVisible(true);
+            DisplayLabelSignUp.setText("Email already registered!");
         }
     }
 

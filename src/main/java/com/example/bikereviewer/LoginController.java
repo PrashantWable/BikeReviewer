@@ -39,14 +39,37 @@ public class LoginController implements Initializable {
     private String userEmail;
     private String password;
 
+    private String receivedUserNameDB;
+
+
+
     @FXML
-    void loginAction(ActionEvent event) {
+    void loginAction(ActionEvent event) throws IOException {
         System.out.println("loginAction running");
         userEmail = getUserEmail();
         password = getPassword();
 
-        if (password.equals(readPasswordFromDB(userEmail, password))){
+        if (password.equals(readPasswordFromDB(userEmail))){
             System.out.println("Correct password");
+            //Storing User data so that it can be passed to different controllers
+          //  User u = new User(userEmail, password, receivedUserNameDB);
+            //Loading new scenes because the above condition is satisfied
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Catalogue.fxml"));
+            root = loader.load();
+            //Passing info to catalogue controller by initializing a object using a FXMLoader.
+            CatalogueController catalogueController = loader.getController();
+            System.out.println(receivedUserNameDB);
+            catalogueController.setUserData(userEmail, password, receivedUserNameDB);
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+
+            // used to send the data from this controller to catalogue controller
+           // stage.setUserData(u);
+            stage.setTitle("Catalogues");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         }
         else{
             System.out.println("Wrong Password");
@@ -55,17 +78,18 @@ public class LoginController implements Initializable {
 
     }
 
-   private static String readPasswordFromDB(String userEmail, String password){
+   private String readPasswordFromDB(String userEmail){
        Connection con = DBConnection.connect();
        PreparedStatement ps = null;
        ResultSet rs = null;
        String receivedPasswordFromDB = "";
        try {
-           String sql = "Select Password from UserData where email = ?";
+           String sql = "Select Password, UserNames from UserData where email = ?";
            ps = con.prepareStatement(sql);
            ps.setString(1, userEmail);
            rs = ps.executeQuery();
            receivedPasswordFromDB = rs.getString(1);
+           receivedUserNameDB = rs.getString(2);
        } catch (SQLException e) {
            System.out.println("Wrong Password");
            //e.printStackTrace();
