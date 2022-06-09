@@ -11,29 +11,29 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="722.0" style="-fx-background-color: #2D3447; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bikereviewer.SignUpController">
    <children>
-      <Label layoutX="185.0" layoutY="156.0" text="Username:" textFill="#a0a2ab">
+      <Label layoutX="185.0" layoutY="228.0" text="Username:" textFill="#a0a2ab">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="188.0" layoutY="217.0" text="Password:" textFill="#a0a2ab">
+      <Label layoutX="188.0" layoutY="281.0" text="Password:" textFill="#a0a2ab">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <PasswordField fx:id="getPasswordSignUp" layoutX="314.0" layoutY="216.0" prefHeight="36.0" prefWidth="200.0" promptText="Enter Password" />
-      <Label layoutX="213.0" layoutY="277.0" text="Gender:" textFill="#a0a2ab">
+      <PasswordField fx:id="getPasswordSignUp" layoutX="314.0" layoutY="281.0" prefHeight="36.0" prefWidth="200.0" promptText="Enter Password" />
+      <Label layoutX="213.0" layoutY="332.0" text="Gender:" textFill="#a0a2ab">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <RadioButton fx:id="getMaleGenderSignUp" layoutX="337.0" layoutY="286.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Male" textFill="#a0a2ab">
+      <RadioButton fx:id="getMaleGenderSignUp" layoutX="337.0" layoutY="341.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Male" textFill="#a0a2ab">
          <toggleGroup>
             <ToggleGroup fx:id="Gender" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="getFemaleGenderSignUp" layoutX="428.0" layoutY="286.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Female" textFill="#a0a2ab" toggleGroup="$Gender" />
-      <Button fx:id="signUpButtonAdd" layoutX="333.0" layoutY="380.0" mnemonicParsing="false" onAction="#signUpButtonAddFunction" style="-fx-background-color: #2196f3;" text="Sign up">
+      <RadioButton fx:id="getFemaleGenderSignUp" layoutX="425.0" layoutY="341.0" mnemonicParsing="false" onAction="#getGenderSignUpFunction" text="Female" textFill="#a0a2ab" toggleGroup="$Gender" />
+      <Button fx:id="signUpButtonAdd" layoutX="337.0" layoutY="437.0" mnemonicParsing="false" onAction="#signUpButtonAddFunction" style="-fx-background-color: #2196f3;" text="Sign up">
          <font>
             <Font size="25.0" />
          </font>
@@ -43,11 +43,17 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="getUsernameSignUp" layoutX="314.0" layoutY="156.0" prefHeight="36.0" prefWidth="200.0" promptText="Enter Username" />
-      <Label fx:id="DisplayLabelSignUp" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="329.0" prefHeight="36.0" prefWidth="290.0" text="Message" textFill="#ec0000">
+      <TextField fx:id="getUsernameSignUp" layoutX="314.0" layoutY="228.0" prefHeight="36.0" prefWidth="200.0" promptText="Enter Username" />
+      <Label fx:id="DisplayLabelSignUp" alignment="CENTER" contentDisplay="CENTER" layoutX="223.0" layoutY="385.0" prefHeight="36.0" prefWidth="290.0" text="Message" textFill="#ec0000">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <Label layoutX="234.0" layoutY="180.0" text="Email:" textFill="#a0a2ab">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="getUserEmailSignUp" layoutX="314.0" layoutY="180.0" prefHeight="36.0" prefWidth="200.0" promptText="Enter Email" />
    </children>
 </AnchorPane>

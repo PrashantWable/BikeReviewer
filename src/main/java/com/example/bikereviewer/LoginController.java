@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -41,11 +44,42 @@ public class LoginController implements Initializable {
         System.out.println("loginAction running");
         userEmail = getUserEmail();
         password = getPassword();
-        //DBConnection.connect();
+
+        if (password.equals(readPasswordFromDB(userEmail, password))){
+            System.out.println("Correct password");
+        }
+        else{
+            System.out.println("Wrong Password");
+        }
+
+
     }
 
-    private static void readFromDB(){
-        Connection con = DBConnection.connect();
+   private static String readPasswordFromDB(String userEmail, String password){
+       Connection con = DBConnection.connect();
+       PreparedStatement ps = null;
+       ResultSet rs = null;
+       String receivedPasswordFromDB = "";
+       try {
+           String sql = "Select Password from UserData where email = ?";
+           ps = con.prepareStatement(sql);
+           ps.setString(1, userEmail);
+           rs = ps.executeQuery();
+           receivedPasswordFromDB = rs.getString(1);
+       } catch (SQLException e) {
+           System.out.println("Wrong Password");
+           //e.printStackTrace();
+       } finally {
+           try {
+               rs.close();
+               ps.close();
+               con.close();
+           } catch (SQLException e) {
+               System.out.println("DataBase connection closing error");
+               //e.printStackTrace();
+           }
+       }
+           return receivedPasswordFromDB;
     }
 
 
