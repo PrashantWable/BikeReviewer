@@ -21,7 +21,7 @@ public class LoginController implements Initializable {
     private PasswordField getPassword;
 
     @FXML
-    private TextField getUsername;
+    private TextField getUserEmail;
 
     @FXML
     private Button loginButton;
@@ -33,13 +33,13 @@ public class LoginController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    private String userName;
+    private String userEmail;
     private String password;
 
     @FXML
     void loginAction(ActionEvent event) {
         System.out.println("loginAction running");
-        userName = getUsername();
+        userEmail = getUserEmail();
         password = getPassword();
         //DBConnection.connect();
     }
@@ -68,8 +68,8 @@ public class LoginController implements Initializable {
 
     }
     @FXML
-    public String getUsername(){
-        return getUsername.getText();
+    public String getUserEmail(){
+        return getUserEmail.getText();
     }
 
     @FXML

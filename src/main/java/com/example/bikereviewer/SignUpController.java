@@ -38,6 +38,9 @@ public class SignUpController implements Initializable {
     private TextField getUsernameSignUp;
 
     @FXML
+    private TextField getUserEmailSignUp;
+
+    @FXML
     private Button returnToLoginButton;
 
     @FXML
@@ -50,6 +53,7 @@ public class SignUpController implements Initializable {
     private String userName;
     private String password;
     private String gender;
+    private String Email;
 
 
     @FXML
@@ -67,27 +71,32 @@ public class SignUpController implements Initializable {
     void signUpButtonAddFunction(ActionEvent event) {
       userName = getUsernameSignUp();
       password = getPasswordSignUp();
+      Email = getUserEmailSignUp();
       //System.out.println(userName + " " + password + " " + gender);
-      if (userName.equals("") || password.equals("") || gender.equals("")){
+      if (userName.equals("") || password.equals("") || gender.equals("") || Email.equals("")){
           DisplayLabelSignUp.setVisible(true);
           DisplayLabelSignUp.setText("Enter all the fields");
       }
       else{
-                insertIntoDB(userName, password, gender);
+                insertIntoDB(Email, userName, password, gender);
+
       }
     }
 
-    private static void insertIntoDB(String userName, String password, String gender){
+    private void insertIntoDB(String Email, String userName, String password, String gender){
         Connection con = DBConnection.connect();
         PreparedStatement ps = null;
         try {
-            String sql = "INSERT INTO UserData(UserNames, Password, Gender) VALUES(?,?,?) ";
+            String sql = "INSERT INTO UserData(Email, UserNames, Password, Gender) VALUES(?,?,?,?) ";
             ps = con.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
-            ps.setString(3, gender);
+            ps.setString(1, Email);
+            ps.setString(2, userName);
+            ps.setString(3, password);
+            ps.setString(4, gender);
             ps.execute();
             System.out.println("Data has been inserted!");
+            DisplayLabelSignUp.setVisible(true);
+            DisplayLabelSignUp.setText("Account successfully created");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -119,5 +128,8 @@ public class SignUpController implements Initializable {
     public String getPasswordSignUp(){
             return getPasswordSignUp.getText();
     }
+
+    @FXML
+    public String getUserEmailSignUp() { return getUserEmailSignUp.getText(); }
 
 }
