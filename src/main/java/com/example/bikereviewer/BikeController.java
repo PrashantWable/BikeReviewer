@@ -27,11 +27,7 @@ public class BikeController implements Initializable{
 
     public void setData(Bike bike) throws FileNotFoundException {
         System.out.println("setData() method started");
-       // Image image = new Image(getClass().getResourceAsStream("3.jpg"));
-       // Image image = new Image(bike.getBikeImageSrc());
-       // FileInput"Stream inputstream = new FileInputStream("C:\\images\\image.jpg");
-        FileInputStream inputstream = new FileInputStream("C:\\Users\\ACER\\IdeaProjects\\BikeReviewer\\3.jpg");
-        Image image = new Image(inputstream);
+        Image image = new Image(getClass().getResourceAsStream(bike.getBikeImageSrc()));
         System.out.println("image set in between");
         singleBikeImage.setImage(image);
        // singleBikeImage.setImage(image);

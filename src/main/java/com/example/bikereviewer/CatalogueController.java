@@ -149,16 +149,18 @@ public class CatalogueController implements Initializable {
     private List<Bike> recentlyAdded(){
         List<Bike> ls = new ArrayList<>();
         Bike bike = new Bike();
-        bike.setBikeImageSrc("src/img/1.jpg");
+        bike.setBikeImageSrc("/demo/1.jpg");
+        System.out.println(bike.getBikeImageSrc());
         bike.setBikeName("Bike No.1");
         bike.setBikePrice("Rs. 3.7 lakh");
         ls.add(bike);
         System.out.println("1st bike added");
-        Bike bike2 = new Bike();
-        bike2.setBikeImageSrc("src/img/2.jpg");
-        bike2.setBikeName("Bike No.2");
-        bike2.setBikePrice("Rs. 3.8 lakh");
-        ls.add(bike2);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/2.jpg");
+        bike.setBikeName("Bike No.2");
+        bike.setBikePrice("Rs. 3.8 lakh");
+        ls.add(bike);
         System.out.println("2st bike added");
         return ls;
     }
