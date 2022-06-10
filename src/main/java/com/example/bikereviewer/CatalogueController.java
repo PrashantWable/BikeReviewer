@@ -41,6 +41,9 @@ public class CatalogueController implements Initializable {
     @FXML
     private VBox bikesLayout;
 
+    @FXML
+    private Button saveInDB;
+
 
     Stage stage;
 
@@ -86,7 +89,7 @@ public class CatalogueController implements Initializable {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting out");
-        alert.setHeaderText("You're about to delete the account");
+        alert.setHeaderText("You're about to delete the account! All progress will be lost out.");
         alert.setContentText("Are you sure you want to delete?:");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
@@ -102,7 +105,7 @@ public class CatalogueController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logging out");
         alert.setHeaderText("You're about to logout!");
-        alert.setContentText("Do you want to save before exiting?:");
+        alert.setContentText("Progress will not be saved!");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             stage = (Stage) catalogueAnchorPane.getScene().getWindow();
@@ -220,7 +223,7 @@ public class CatalogueController implements Initializable {
                                 int rating8){
         welcomeLabel.setText("Welcome " + userName);
         this.rating1 = rating1;
-        System.out.println("In setWelcomeLabel() method: Rating1 = "+rating1);
+        System.out.println("In setWelcomeLabel() method: Rating1 = "+ rating1);
         this.rating2 = rating2;
         this.rating3 = rating3;
         this.rating4 = rating4;
@@ -267,4 +270,52 @@ public class CatalogueController implements Initializable {
         }
     }
 
+    @FXML
+    void UserSaveInDBFunction(ActionEvent event) {
+       Connection con = DBConnection.connect();
+       PreparedStatement ps = null;
+       updateBikeRatings(recentlyAdded);
+       try{
+           String sql = "UPDATE UserData set rating1 = ?, rating2 = ?, rating3 =  ?, rating4 = ?, rating5 = ?, rating6 = ?, rating7 = ?, rating8 = ? WHERE Email = ? ";
+           ps = con.prepareStatement(sql);
+           System.out.println("rating is as follows:" + rating1);
+           System.out.println(email);
+           ps.setString(1, rating1 + "");
+           ps.setString(2, rating2 + "");
+           ps.setString(3, rating3 + "");
+           ps.setString(4, rating4 + "");
+           ps.setString(5, rating5 + "");
+           ps.setString(6, rating6 + "");
+           ps.setString(7, rating7 + "");
+           ps.setString(8, rating8 + "");
+           ps.setString(9, email);
+           ps.execute();
+           System.out.println("DB has been updated");
+       }
+       catch (SQLException e){
+           System.out.println("Some sql statement error during updation");
+            System.out.println(e.toString());
+       } finally {
+        try {
+            ps.close();
+            con.close();
+        } catch (SQLException e1) {
+            System.out.println("Some closing error!");
+            e1.printStackTrace();
+        }
+
+        }
+    }
+
+    // This method is used to update the local variables ratings so that it can be updated in DB as well.
+ private void updateBikeRatings(List<Bike> bike){
+     rating1 = bike.get(0).getBikeRatings();
+     rating2 = bike.get(1).getBikeRatings();;
+     rating3 = bike.get(2).getBikeRatings();;
+     rating4 = bike.get(3).getBikeRatings();;
+     rating5 = bike.get(4).getBikeRatings();;
+     rating6 = bike.get(5).getBikeRatings();;
+     rating7 = bike.get(6).getBikeRatings();;
+     rating8 = bike.get(7).getBikeRatings();;
+ }
 }

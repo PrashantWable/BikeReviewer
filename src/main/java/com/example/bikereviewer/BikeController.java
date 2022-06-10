@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,18 +32,28 @@ public class BikeController implements Initializable{
     @FXML
     private Button incrementRating;
 
+    private int currentBikeRating;
+    private Bike currentBike;
+
 
     public void setData(Bike bike) throws FileNotFoundException {
        // System.out.println("setData() method started");
+        currentBike = bike;
         Image image = new Image(getClass().getResourceAsStream(bike.getBikeImageSrc()));
        // System.out.println("image set in between");
         singleBikeImage.setImage(image);
        // singleBikeImage.setImage(image);
      //   System.out.println("image set properly");
         singleBikeRating.setText("" + bike.getBikeRatings());
+        currentBikeRating = bike.getBikeRatings();
         bikeName.setText(bike.getBikeName());
         bikePrice.setText(bike.getBikePrice());
         System.out.println("setData() method in BikeController worked properly!");
+    }
+
+    public void setRatingData(Bike bike) throws FileNotFoundException {
+        bike.setBikeRatings(currentBikeRating);
+        System.out.println("setRatingData() method in BikeController worked properly!");
     }
 
     @Override
@@ -52,12 +62,20 @@ public class BikeController implements Initializable{
     }
 
     @FXML
-    void decrementRatingFunction(ActionEvent event) {
-
+    void decrementRatingFunction(ActionEvent event) throws FileNotFoundException {
+       if(currentBikeRating>0){
+           currentBikeRating = currentBikeRating-1;
+       }
+        singleBikeRating.setText("" + currentBikeRating);
+        setRatingData(currentBike);
     }
 
     @FXML
-    void incrementRatingFunction(ActionEvent event) {
-
+    void incrementRatingFunction(ActionEvent event) throws FileNotFoundException {
+        if(currentBikeRating<10){
+            currentBikeRating = currentBikeRating+1;
+        }
+        singleBikeRating.setText("" + currentBikeRating);
+        setRatingData(currentBike);
     }
 }

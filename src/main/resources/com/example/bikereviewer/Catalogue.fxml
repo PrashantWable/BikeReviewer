@@ -28,12 +28,13 @@
       <Button fx:id="UserUpdateButton" layoutX="55.0" layoutY="476.0" mnemonicParsing="false" onAction="#UserUpdateDBFunction" prefHeight="30.0" prefWidth="77.0" text="Update" />
       <Button fx:id="UserDeleteButton" layoutX="55.0" layoutY="523.0" mnemonicParsing="false" onAction="#UserDeleteDBFunction" prefHeight="30.0" prefWidth="77.0" text="Delete" />
       <Button fx:id="UserLogoutButton" layoutX="55.0" layoutY="572.0" mnemonicParsing="false" onAction="#UserLogoutFunction" prefHeight="30.0" prefWidth="77.0" text="Logout" />
-      <Separator layoutX="10.0" layoutY="154.0" prefHeight="3.0" prefWidth="165.0" />
-      <Separator layoutX="9.0" layoutY="427.0" prefHeight="3.0" prefWidth="166.0" />
+      <Separator layoutX="10.0" layoutY="154.0" prefHeight="3.0" prefWidth="154.0" />
+      <Separator layoutX="9.0" layoutY="427.0" prefHeight="3.0" prefWidth="154.0" />
       <ScrollPane layoutX="176.0" layoutY="63.0" prefHeight="618.0" prefWidth="624.0">
          <content>
             <VBox fx:id="bikesLayout" alignment="CENTER" prefHeight="614.0" prefWidth="609.0" spacing="10.0" style="-fx-background-color: #ffffff;" />
          </content>
       </ScrollPane>
+      <Button fx:id="saveInDB" layoutX="49.0" layoutY="372.0" mnemonicParsing="false" onAction="#UserSaveInDBFunction" prefHeight="30.0" text="Save Progress" />
    </children>
 </AnchorPane>
