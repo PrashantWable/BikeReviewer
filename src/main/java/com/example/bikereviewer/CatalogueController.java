@@ -149,19 +149,55 @@ public class CatalogueController implements Initializable {
     private List<Bike> recentlyAdded(){
         List<Bike> ls = new ArrayList<>();
         Bike bike = new Bike();
-        bike.setBikeImageSrc("/demo/1.jpg");
+        bike.setBikeImageSrc("/demo/1.Honda_Hness_CB350.JPG");
         System.out.println(bike.getBikeImageSrc());
-        bike.setBikeName("Bike No.1");
-        bike.setBikePrice("Rs. 3.7 lakh");
+        bike.setBikeName("Honda H'ness CB350");
+        bike.setBikePrice("Rs. 1.98 - 2.05 Lakh");
         ls.add(bike);
         System.out.println("1st bike added");
 
         bike = new Bike();
-        bike.setBikeImageSrc("/demo/2.jpg");
-        bike.setBikeName("Bike No.2");
-        bike.setBikePrice("Rs. 3.8 lakh");
+        bike.setBikeImageSrc("/demo/2.Yezdi_Roadster.JPG");
+        bike.setBikeName("Yezdi Roadster");
+        bike.setBikePrice("Rs. 1.98 - 2.06 Lakh");
         ls.add(bike);
-        System.out.println("2st bike added");
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/3.Jawa_42.JPG");
+        bike.setBikeName("Jawa 42");
+        bike.setBikePrice("Rs. 1.69 - 1.91 Lakh");
+        ls.add(bike);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/4.Earth_Energy_EV_R.JPG");
+        bike.setBikeName("Earth Energy EV Evolve");
+        bike.setBikePrice("Rs. 1.42 Lakh");
+        ls.add(bike);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/5.Cyborg_Yoda.JPG");
+        bike.setBikeName("Cyborg Yoda");
+        bike.setBikePrice("Rs. 1.84 Lakh");
+        ls.add(bike);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/6.Honda_CBR_350RS.JPG");
+        bike.setBikeName("Honda CBR 350RS");
+        bike.setBikePrice("Rs. 2.03 Lakh");
+        ls.add(bike);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/7.Jawa_Perek.JPG");
+        bike.setBikeName("Jawa Perek");
+        bike.setBikePrice("Rs. 2.06 Lakh");
+        ls.add(bike);
+
+        bike = new Bike();
+        bike.setBikeImageSrc("/demo/8.Royal_Enfield_Meteor_350.JPG");
+        bike.setBikeName("Royal Enfield Meteor 350");
+        bike.setBikePrice("Rs. 2.01 - 2.17 Lakh");
+        ls.add(bike);
+
         return ls;
     }
 
