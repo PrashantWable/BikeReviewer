@@ -40,8 +40,14 @@ public class LoginController implements Initializable {
     private String password;
 
     private String receivedUserNameDB;
-
-
+    private int receivedRating1;
+    private int receivedRating2;
+    private int receivedRating3;
+    private int receivedRating4;
+    private int receivedRating5;
+    private int receivedRating6;
+    private int receivedRating7;
+    private int receivedRating8;
 
     @FXML
     void loginAction(ActionEvent event) throws IOException {
@@ -59,7 +65,8 @@ public class LoginController implements Initializable {
             //Passing info to catalogue controller by initializing a object using a FXMLoader.
             CatalogueController catalogueController = loader.getController();
             System.out.println(receivedUserNameDB);
-            catalogueController.setUserData(userEmail, password, receivedUserNameDB);
+            catalogueController.setUserData(userEmail, password, receivedUserNameDB, receivedRating1, receivedRating2,
+                    receivedRating3, receivedRating4, receivedRating5, receivedRating6, receivedRating7, receivedRating8);
 
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -72,7 +79,7 @@ public class LoginController implements Initializable {
             stage.show();
         }
         else{
-            System.out.println("Wrong Password");
+            System.out.println("Wrong Password in loginAction()");
         }
 
 
@@ -84,14 +91,24 @@ public class LoginController implements Initializable {
        ResultSet rs = null;
        String receivedPasswordFromDB = "";
        try {
-           String sql = "Select Password, UserNames from UserData where email = ?";
+           String sql = "Select Password, UserNames, rating1, rating2, rating3, rating4, rating5, rating6, rating7, rating8 from UserData where email = ? ";
            ps = con.prepareStatement(sql);
            ps.setString(1, userEmail);
            rs = ps.executeQuery();
            receivedPasswordFromDB = rs.getString(1);
            receivedUserNameDB = rs.getString(2);
+           receivedRating1 = rs.getInt(3);
+           receivedRating2 = rs.getInt(4);
+           receivedRating3 = rs.getInt(5);
+           receivedRating4 = rs.getInt(6);
+           receivedRating5 = rs.getInt(7);
+           receivedRating6 = rs.getInt(8);
+           receivedRating7 = rs.getInt(9);
+           receivedRating8 = rs.getInt(10);
+
+           System.out.println("Pass:"+ receivedPasswordFromDB + " Name:"+ receivedUserNameDB + " Rating2:" + receivedRating2);
        } catch (SQLException e) {
-           System.out.println("Wrong Password");
+           System.out.println("Wrong Password in readPasswordFromDB()");
            //e.printStackTrace();
        } finally {
            try {

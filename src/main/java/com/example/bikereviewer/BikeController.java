@@ -1,7 +1,9 @@
 package com.example.bikereviewer;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,6 +26,12 @@ public class BikeController implements Initializable{
     @FXML
     private ImageView singleBikeImage;
 
+    @FXML
+    private Button decrementRating;
+
+    @FXML
+    private Button incrementRating;
+
 
     public void setData(Bike bike) throws FileNotFoundException {
        // System.out.println("setData() method started");
@@ -31,8 +39,8 @@ public class BikeController implements Initializable{
        // System.out.println("image set in between");
         singleBikeImage.setImage(image);
        // singleBikeImage.setImage(image);
-        System.out.println("image set properly");
-        //singleBikeRating.setText(bike.getBikeName());
+     //   System.out.println("image set properly");
+        singleBikeRating.setText("" + bike.getBikeRatings());
         bikeName.setText(bike.getBikeName());
         bikePrice.setText(bike.getBikePrice());
         System.out.println("setData() method in BikeController worked properly!");
@@ -40,6 +48,16 @@ public class BikeController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    @FXML
+    void decrementRatingFunction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void incrementRatingFunction(ActionEvent event) {
 
     }
 }

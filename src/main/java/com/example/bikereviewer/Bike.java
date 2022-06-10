@@ -3,7 +3,7 @@ package com.example.bikereviewer;
 public class Bike {
     private String bikeName;
     private String bikeImageSrc;
-    //private int bikeRatings;
+    private int bikeRatings;
     private String bikePrice;
 
     public String getBikePrice() {
@@ -30,11 +30,11 @@ public class Bike {
         this.bikeImageSrc = bikeImageSrc;
     }
 
-//    public int getBikeRatings() {
-//        return bikeRatings;
-//    }
-//
-//    public void setBikeRatings(int bikeRatings) {
-//        this.bikeRatings = bikeRatings;
-//    }
+    public int getBikeRatings() {
+        return bikeRatings;
+    }
+
+    public void setBikeRatings(int bikeRatings) {
+       this.bikeRatings = bikeRatings;
+    }
 }
