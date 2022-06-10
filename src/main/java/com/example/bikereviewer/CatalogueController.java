@@ -4,14 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,9 +17,12 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CatalogueController implements Initializable {
+
     @FXML
     private Button UserDeleteButton;
 
@@ -37,12 +38,16 @@ public class CatalogueController implements Initializable {
     @FXML
     private AnchorPane catalogueAnchorPane;
 
+    @FXML
+    private VBox bikesLayout;
+
+
     Stage stage;
 
     private String userName;
     private String email;
     private String password;
-    //private String
+    private List<Bike> recentlyAdded;
 
     @FXML
     void UserDeleteDBFunction(ActionEvent event) {
@@ -53,19 +58,17 @@ public class CatalogueController implements Initializable {
             ps = con.prepareStatement(sql);
             ps.setString(1, email);
             UserDeleteDBAlertFunction(ps);
-           // ps.execute();
+            // ps.execute();
             System.out.println("Deletion successful in UserDeleteDBFunction!");
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 ps.close();
                 con.close();
-            }
-           catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
-           }
+            }
 
         }
     }
@@ -78,11 +81,10 @@ public class CatalogueController implements Initializable {
         alert.setHeaderText("You're about to delete the account");
         alert.setContentText("Are you sure you want to delete?:");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
-           // stage = (Stage) catalogueAnchorPane.getScene().getWindow();
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            // stage = (Stage) catalogueAnchorPane.getScene().getWindow();
             ps.execute();
             System.out.println("Alert Function method");
-           // stage.close();
         }
     }
 
@@ -94,7 +96,7 @@ public class CatalogueController implements Initializable {
         alert.setHeaderText("You're about to logout!");
         alert.setContentText("Do you want to save before exiting?:");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             stage = (Stage) catalogueAnchorPane.getScene().getWindow();
             System.out.println("You have successfully logged out!");
             stage.close();
@@ -106,7 +108,7 @@ public class CatalogueController implements Initializable {
 
     }
 
-    public void setUserData(String userEmail, String userPassword, String userId){
+    public void setUserData(String userEmail, String userPassword, String userId) {
         email = userEmail;
         password = userPassword;
         userName = userId;
@@ -117,7 +119,48 @@ public class CatalogueController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Not able to set welcome label using the below methods here.
         //setWelcomeLabel(userName);
-       // welcomeLabel.setText("Welcome " + userName);
+        // welcomeLabel.setText("Welcome " + userName);
+
+        recentlyAdded = new ArrayList<>(recentlyAdded());
+        try {
+            for (int i = 0; i < recentlyAdded.size(); i++) {
+                System.out.println("Loop successfully started");
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                System.out.println("1");
+                fxmlLoader.setLocation(getClass().getResource("SingleBike.fxml"));
+                System.out.println("2");
+                VBox cardBox = fxmlLoader.load();
+                System.out.println("3");
+                BikeController bikeController = fxmlLoader.getController();
+                System.out.println("4");
+                bikeController.setData(recentlyAdded.get(i));
+                System.out.println("5");
+                bikesLayout.getChildren().add(cardBox);
+                System.out.println("loop ended");
+            }
+
+    } catch(IOException e) {
+            System.out.println("Error in initialize()");
+        e.printStackTrace();
+    }
+
+}
+
+    private List<Bike> recentlyAdded(){
+        List<Bike> ls = new ArrayList<>();
+        Bike bike = new Bike();
+        bike.setBikeImageSrc("src/img/1.jpg");
+        bike.setBikeName("Bike No.1");
+        bike.setBikePrice("Rs. 3.7 lakh");
+        ls.add(bike);
+        System.out.println("1st bike added");
+        Bike bike2 = new Bike();
+        bike2.setBikeImageSrc("src/img/2.jpg");
+        bike2.setBikeName("Bike No.2");
+        bike2.setBikePrice("Rs. 3.8 lakh");
+        ls.add(bike2);
+        System.out.println("2st bike added");
+        return ls;
     }
 
     public void setWelcomeLabel(String userName){
