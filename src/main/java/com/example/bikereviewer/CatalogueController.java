@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -45,7 +47,9 @@ public class CatalogueController implements Initializable {
     private Label progressLabel;
 
 
-    Stage stage;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     private String userName;
     private String email;
@@ -71,7 +75,11 @@ public class CatalogueController implements Initializable {
             UserDeleteDBAlertFunction(ps);
             // ps.execute();
             System.out.println("Deletion successful in UserDeleteDBFunction!");
+
+
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
@@ -85,7 +93,7 @@ public class CatalogueController implements Initializable {
     }
 
     @FXML
-    void UserDeleteDBAlertFunction(PreparedStatement ps) throws SQLException {
+    void UserDeleteDBAlertFunction(PreparedStatement ps) throws SQLException, IOException {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Deleting out");
@@ -95,12 +103,20 @@ public class CatalogueController implements Initializable {
         if (alert.showAndWait().get() == ButtonType.OK) {
             // stage = (Stage) catalogueAnchorPane.getScene().getWindow();
             ps.execute();
-            System.out.println("Alert Function method");
+            //This is to jump to the fist login page
+            System.out.println("UserDeleteDBAlert Function method");
+            stage = (Stage) catalogueAnchorPane.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));
+            scene = new Scene(root);
+            stage.setTitle("Login Page");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         }
     }
 
     @FXML
-    void UserLogoutFunction(ActionEvent event) {
+    void UserLogoutFunction(ActionEvent event) throws IOException {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logging out");
@@ -108,9 +124,16 @@ public class CatalogueController implements Initializable {
         alert.setContentText("Progress will not be saved!");
 
         if (alert.showAndWait().get() == ButtonType.OK) {
+            //This is used to jump to first login page
             stage = (Stage) catalogueAnchorPane.getScene().getWindow();
             System.out.println("You have successfully logged out!");
-            stage.close();
+            root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));
+            scene = new Scene(root);
+            stage.setTitle("Login Page");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+            //stage.close();
         }
     }
 
@@ -253,7 +276,8 @@ public class CatalogueController implements Initializable {
 
 
     //Unused method for setONcloseRequest
-    public void setOnCloseRequest(Stage stage){
+    public void setOnCloseRequest(){
+        stage = (Stage) catalogueAnchorPane.getScene().getWindow();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logging out");
         alert.setHeaderText("You're about to logout!");

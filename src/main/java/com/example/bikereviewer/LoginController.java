@@ -35,6 +35,9 @@ public class LoginController implements Initializable {
     @FXML
     private Label loginMessageLabel;
 
+    @FXML
+    private Label madeByLabel;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -156,5 +159,6 @@ public class LoginController implements Initializable {
     public String getPassword(){
         return getPassword.getText();
     }
+
 
 }
