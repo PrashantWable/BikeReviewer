@@ -73,14 +73,14 @@ public class SignUpController implements Initializable {
       password = getPasswordSignUp();
       Email = getUserEmailSignUp();
       //System.out.println(userName + " " + password + " " + gender);
-      if (userName.equals("") || password.equals("") || gender.equals("") || Email.equals("")){
-          DisplayLabelSignUp.setVisible(true);
-          DisplayLabelSignUp.setText("Enter all the fields");
-      }
+        if (userName.equals("") || password.equals("") || gender.equals("") || Email.equals("")){
+            DisplayLabelSignUp.setVisible(true);
+            DisplayLabelSignUp.setText("Enter all the fields");
+        }
       else{
-                insertIntoDB(Email, userName, password, gender);
+            insertIntoDB(Email, userName, password, gender);
 
-      }
+        }
     }
 
     private void insertIntoDB(String Email, String userName, String password, String gender){

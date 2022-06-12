@@ -30,9 +30,6 @@ public class CatalogueController implements Initializable {
     private Button UserLogoutButton;
 
     @FXML
-    private Button UserUpdateButton;
-
-    @FXML
     private Label welcomeLabel;
 
     @FXML
@@ -43,6 +40,9 @@ public class CatalogueController implements Initializable {
 
     @FXML
     private Button saveInDB;
+
+    @FXML
+    private Label progressLabel;
 
 
     Stage stage;
@@ -114,10 +114,6 @@ public class CatalogueController implements Initializable {
         }
     }
 
-    @FXML
-    void UserUpdateDBFunction(ActionEvent event) {
-
-    }
 
     public void setUserData(String userEmail, String userPassword, String userId, int rating1, int rating2, int rating3, int rating4,
                             int rating5, int rating6, int rating7, int rating8) {
@@ -152,7 +148,7 @@ public class CatalogueController implements Initializable {
 //            System.out.println("Error in initialize()");
 //        e.printStackTrace();
 //    }
-
+      progressLabel.setVisible(false);
 }
 
     private List<Bike> recentlyAdded(){
@@ -291,9 +287,13 @@ public class CatalogueController implements Initializable {
            ps.setString(9, email);
            ps.execute();
            System.out.println("DB has been updated");
+           progressLabel.setVisible(true);
+           progressLabel.setText("Progress saved!");
        }
        catch (SQLException e){
            System.out.println("Some sql statement error during updation");
+           progressLabel.setVisible(true);
+           progressLabel.setText("Error saving!");
             System.out.println(e.toString());
        } finally {
         try {

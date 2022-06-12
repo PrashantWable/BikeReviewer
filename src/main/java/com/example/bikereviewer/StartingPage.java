@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class StartingPage extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Login Page");
         stage.setScene(scene);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/demo/icon.png")));
         stage.setResizable(false);
         stage.show();
 

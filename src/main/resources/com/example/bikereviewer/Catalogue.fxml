@@ -25,9 +25,8 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="UserUpdateButton" layoutX="55.0" layoutY="476.0" mnemonicParsing="false" onAction="#UserUpdateDBFunction" prefHeight="30.0" prefWidth="77.0" text="Update" />
-      <Button fx:id="UserDeleteButton" layoutX="55.0" layoutY="523.0" mnemonicParsing="false" onAction="#UserDeleteDBFunction" prefHeight="30.0" prefWidth="77.0" text="Delete" />
-      <Button fx:id="UserLogoutButton" layoutX="55.0" layoutY="572.0" mnemonicParsing="false" onAction="#UserLogoutFunction" prefHeight="30.0" prefWidth="77.0" text="Logout" />
+      <Button fx:id="UserDeleteButton" layoutX="48.0" layoutY="478.0" mnemonicParsing="false" onAction="#UserDeleteDBFunction" prefHeight="30.0" prefWidth="90.0" text="Delete" />
+      <Button fx:id="UserLogoutButton" layoutX="49.0" layoutY="526.0" mnemonicParsing="false" onAction="#UserLogoutFunction" prefHeight="30.0" prefWidth="90.0" text="Logout" />
       <Separator layoutX="10.0" layoutY="154.0" prefHeight="3.0" prefWidth="154.0" />
       <Separator layoutX="9.0" layoutY="427.0" prefHeight="3.0" prefWidth="154.0" />
       <ScrollPane layoutX="176.0" layoutY="63.0" prefHeight="618.0" prefWidth="624.0">
@@ -35,6 +34,14 @@
             <VBox fx:id="bikesLayout" alignment="CENTER" prefHeight="614.0" prefWidth="609.0" spacing="10.0" style="-fx-background-color: #ffffff;" />
          </content>
       </ScrollPane>
-      <Button fx:id="saveInDB" layoutX="49.0" layoutY="372.0" mnemonicParsing="false" onAction="#UserSaveInDBFunction" prefHeight="30.0" text="Save Progress" />
+      <Button fx:id="saveInDB" layoutX="49.0" layoutY="372.0" mnemonicParsing="false" onAction="#UserSaveInDBFunction" prefHeight="30.0" prefWidth="90.0" text="Save Progress" />
+      <Label layoutX="9.0" layoutY="174.0" prefHeight="30.0" prefWidth="154.0" text="Welcome to Bike Reviewer," textFill="#a0a2ab" />
+      <Label layoutX="10.0" layoutY="204.0" prefHeight="30.0" prefWidth="154.0" text="here you can review" textFill="#a0a2ab" />
+      <Label layoutX="9.0" layoutY="234.0" prefHeight="30.0" prefWidth="154.0" text="different bikes." textFill="#a0a2ab" />
+      <Label fx:id="progressLabel" alignment="CENTER" layoutX="17.0" layoutY="332.0" prefHeight="30.0" prefWidth="154.0" text="Progress" textFill="#ef0606">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

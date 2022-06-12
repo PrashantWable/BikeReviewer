@@ -32,6 +32,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button signUpButton;
 
+    @FXML
+    private Label loginMessageLabel;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -80,6 +83,8 @@ public class LoginController implements Initializable {
         }
         else{
             System.out.println("Wrong Password in loginAction()");
+            loginMessageLabel.setVisible(true);
+            loginMessageLabel.setText("Wrong username or password!");
         }
 
 
@@ -140,7 +145,7 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //getUsername.setStyle("-fx-text-inner-color: #a0a2ab");
         //getPassword.setStyle("-fx-text-inner-color: #a0a2ab");
-
+        loginMessageLabel.setVisible(false);
     }
     @FXML
     public String getUserEmail(){

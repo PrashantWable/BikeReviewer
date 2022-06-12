@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="722.0" style="-fx-background-color: #2D3447; -fx-border-radius: 20; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bikereviewer.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="722.0" style="-fx-background-color: #2D3447;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bikereviewer.LoginController">
    <children>
       <Label layoutX="188.0" layoutY="217.0" prefHeight="36.0" prefWidth="118.0" text="Password:" textFill="#a0a2ab">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" layoutX="591.0" layoutY="31.0" mnemonicParsing="false" onAction="#signUp" prefHeight="43.2" prefWidth="96.8" text="Sign UP">
+      <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" layoutX="582.0" layoutY="31.0" mnemonicParsing="false" onAction="#signUp" prefHeight="46.0" prefWidth="106.0" style="-fx-background-color: #151928; -fx-border-color: #a0a2ab;" text="Sign UP" textFill="#a0a2ab">
          <font>
             <Font size="20.0" />
          </font>
@@ -24,12 +23,16 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <ButtonBar layoutX="59.0" layoutY="86.0" prefHeight="40.0" prefWidth="200.0" />
       <PasswordField fx:id="getPassword" layoutX="314.0" layoutY="216.0" prefHeight="36.0" prefWidth="200.0" promptText="Password" />
       <TextField fx:id="getUserEmail" layoutX="314.0" layoutY="156.0" prefHeight="36.0" prefWidth="200.0" promptText="Email" />
       <Label layoutX="234.0" layoutY="156.0" prefHeight="36.0" prefWidth="80.0" text="Email:" textFill="#a0a2ab">
          <font>
             <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="234.0" layoutY="285.0" prefHeight="36.0" prefWidth="278.0" text="Message" textFill="#f20606">
+         <font>
+            <Font name="System Bold" size="16.0" />
          </font>
       </Label>
    </children>
